@@ -185,3 +185,17 @@ h5,
 section {
   padding: var(--space-m) var(--space-s);
 }
+
+.skill_button{
+	min-width: 50px;
+	min-height: 50px;
+	background-color: var(--button-color);
+	border: none;
+	padding: var(--space-2xs) var(--space-2xl);
+	text-align: center;
+	text-decoration: none;
+	border-radius: 15px;
+	display: inline-block;
+	font-family: Lexend;
+	color: var(--default-text);
+}
