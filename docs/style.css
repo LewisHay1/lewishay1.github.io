@@ -1,7 +1,15 @@
-/** CORE CONFIG
-* all the basic good stuff for css styling
-* mostly enabling, disabling, or otherwise overriding pre-built utils
-*/
+/**
+ * CORE CONFIG
+ * This powers everything from utility class generation to breakpoints
+ * to enabling/disabling pre-built components/utilities.
+ */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
 
 *:focus {
 	outline:none;
@@ -23,8 +31,8 @@ dd {
 
 /** ul and ol elements with list role should suggest removing default styling
 * primarily used by header for page navigation list items
-*/
-ul[role="list"],
+*/ul[role="list"],
+
 ol[role="list"] {
   list-style: none;
   padding: 0;
@@ -40,8 +48,58 @@ ol[role="list"] {
   font-style: normal;
 }
 
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  letter-spacing: -0.01em;
+}
+
+/* All elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+}
+
+/* setting page defaults i.e. page colour, text colour and font*/
+html {
+	background-color: var(--bg-color);
+	font-family: Lexend;
+	color: var(--default-text);
+	text-align: center;
+}
+
+
+main:focus {
+  outline: none;
+}
+
 /* @link https://utopia.fyi/type/calculator?c=320,18,1.2,1240,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
-/* Predetermined font sizes */
 :root {
   --step--2: clamp(0.7813rem, 0.7747rem + 0.0326vw, 0.8rem);
   --step--1: clamp(0.9375rem, 0.9158rem + 0.1087vw, 1rem);
@@ -54,7 +112,6 @@ ol[role="list"] {
 }
 
 /* @link https://utopia.fyi/space/calculator?c=320,18,1.2,1240,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
-/* Predetermined padding sizes */
 :root {
   --space-3xs: clamp(0.3125rem, 0.3125rem + 0vw, 0.3125rem);
   --space-2xs: clamp(0.5625rem, 0.5408rem + 0.1087vw, 0.625rem);
@@ -75,7 +132,8 @@ ol[role="list"] {
 	--button-color: rgba(115, 115, 115, 1);
 	--highlight-color: rgba(94, 23, 235, 1);
 	--default-text: rgba(220, 220, 220, 1);
-}
+  --shadow-color: rgba(56,46,76, 0.8);
+} 
 
 /* Inherit fonts for inputs and buttons */
 input,
@@ -109,34 +167,59 @@ html:focus-within {
 /* Setting font sizes */
 h1,
 .h1 {
-  font-size: var(--step-5);
+	font-size: var(--step-5);
+	margin-bottom: 5px;
+	padding: 15px 1rem 5px;
+	border-bottom: solid 5px var(--highlight-color);
+	width: auto;
+	margin: auto;
+	display: inline-block;
 }
 
 h2,
 .h2 {
 	font-size: var(--step-4);
+	padding: 15px 1.5rem 0;
+	border-bottom: solid 5px var(--highlight-color);
+	width: auto;
+	margin: auto;
+	display: inline-block;
 }
 
 h3,
 .h3 {
 	font-size: var(--step-3);
+	transition-duration: 0.3s;
+  margin: auto;
+}
+
+h3.preview,
+.h3.preview {
+	background-color: var(--highlight-color);
 }
 
 h4,
 .h4 {
 	font-size: var(--step-2);
+  margin: auto;
 }
 
 h5,
 .h5 {
-	font-size: var(--step-1);
+	font-size: var(--step--1);
+  margin: auto;
 }
 
-/* Setting FlexBox attributes */
+/* define some constants */
 .flex {
   display: flex;
   align-items: center;
-  gap: var(--space-s);
+  gap: var(--space-3xl);
+}
+@media (max-width: 468px) {
+  .flex {
+    flex-wrap: wrap;
+  }
 }
 .flex_center {
   justify-content: center;
@@ -147,7 +230,14 @@ h5,
 .flex_between {
   justify-content: space-between;
 }
-
+@media (max-width: 468px) {
+  .flex_around {
+    justify-content: center;
+  }
+  .flex_between {
+    justify-content: center;
+  }
+}
 .text_center {
   text-align: center;
 }
@@ -155,7 +245,12 @@ h5,
   text-align: right;
 }
 
-/* Create the wrappers */
+/* define spacing */
+.padding-top-3xs {
+  padding: var(--space-3xs);
+}
+
+/* create the wrappers */
 .wrapper {
   width: 100%;
   max-width: 100%;
@@ -170,20 +265,36 @@ h5,
   background-color: var(--button-color);
 }
 
+.container {
+	width: 100%;
+	padding: var(--space-s) var(--space-3xl);
+	display: grid;
+	grid-template-columns: repeat(3, minmax(10px, 2fr));
+	grid-template-rows: repeat(2, minmax(10px, 1fr));
+	grid-row-gap: 1em;
+	grid-column-gap: 5em;
+	
+}
+
 /* Style the header */
 .site_header {
   padding: var(--space-3xs) 0;
   background: var(--header-color);
 }
 
-.site_header_nav ul li a {
-  text-decoration: none;
-  color: #fff;
+.site_header_nav ul li {
+	padding: 0 var(--space-xl);
+	border-radius: 30px;
+	transition-duration: 0.4s;
 }
 
-/* General section styling */
-section {
-  padding: var(--space-m) var(--space-s);
+.site_header_nav ul li a {
+	text-decoration: none;
+	color: var(--default-text);
+}
+
+.site_header_nav ul li:hover {
+	background-color: var(--shadow-color);
 }
 
 .skill_button{
@@ -223,4 +334,10 @@ section {
 .proj_button:hover{
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
   background-color: var(--shadow-color);
+}
+
+
+/* General styling for sections */
+section {
+  padding: var(--space-m) var(--space-s);
 }
