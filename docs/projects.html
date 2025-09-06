@@ -24,6 +24,80 @@
       </div>
 		</header>
     <main>
+      <section id="projects">
+        <div class="wrapper">
+          <div class="text_center">
+            <h2 class="h2">Projects</h2>
+          </div>
+          <div class="projects_container">
+            <div class="vert_container">
+              <div class="wrapper_inner">
+                <div class="flex_center">
+                  <h3 class="h3" style="display:inline-block">Project 1</h3>
+                  <button class="toggle_exp" data-show="proj1" style="display:inline-block">►</button>
+                </div>
+                <div class="expandable" id="proj1">
+                  <h4 class="h4">Info about Project 1</h4>
+                  <h4 class="h4">More info</h4>
+                  <h5 class="h5">yada yada</h5>
+                </div>
+              </div>
+              <div class="wrapper_inner" id="proj3" style="background-color: red;">
+                <h3 class="h3">Project 3</h3>
+                <h4 class="h4">Info about Project 3</h4>
+                <h4 class="h4">More info</h4>
+                <h5 class="h5">yada yada</h5>
+              </div>
+              <div class="wrapper_inner" id="proj5" style="background-color: green;">
+                <h3 class="h3">Project 5</h3>
+                <h4 class="h4">Info about Project 5</h4>
+                <h4 class="h4">More info</h4>
+                <h5 class="h5">yada yada</h5>
+              </div>
+            </div>
+            <div class="vert_container">
+              <div class="wrapper_inner">
+                <div class="flex_center">
+                  <h3 class="h3" style="display:inline-block">Project 2</h3>
+                  <button class="toggle_exp" data-show="proj2" style="display:inline-block">►</button>
+                </div>
+                <div class="expandable" id="proj2">
+                  <h4 class="h4">Info about Project 2</h4>
+                  <h4 class="h4">More info</h4>
+                  <h5 class="h5">yada yada</h5>
+                </div>
+              </div>
+              <div class="wrapper_inner" id="proj4">
+                <h3 class="h3">Project 4</h3>
+                <h4 class="h4">Info about Project 4</h4>
+                <h4 class="h4">More info</h4>
+                <h5 class="h5">yada yada</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <script>
+        console.log("js loaded");
+        document.querySelectorAll(".toggle_exp").forEach(btn => {
+          btn.addEventListener("click", () => {
+            const content = document.getElementById(btn.dataset.show.split(" "));
+            if (content.classList.contains("expand")) {
+              content.classList.remove("expand");
+              content.style.maxHeight = null;
+              content.style.padding = "0";
+              btn.style.rotate="0deg";
+              btn.style.transform="all 0.4s ease";
+            }
+            else {
+              content.classList.add("expand");
+              content.style.maxHeight = content.scrollHeight + "px";
+              content.style.padding = "0 0 100px";
+              btn.style.rotate="90deg";
+            }
+          })
+        })
+      </script>
 		</main>
 	</body>
 </html>
