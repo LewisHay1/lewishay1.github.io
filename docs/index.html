@@ -1,17 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <h1><b>Portfolio</b></h1>
-    <h2><i>Lewis Hay</i></h2>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
   </head>
   <body>
-    <p>Hello world!</p>
-    <p>This is a basic HTML page for setup.</p>
+     <header class="site_header">
+      <div>
+        <nav class="site_header_nav">
+          <ul role="list" class="flex flex_center">
+            <li><a href="index.html"><h4>Home</h4></a></li>
+            <li><a href="about.html"><h4>About</h4></a></li>
+            <li><a href="projects.html"><h4>Projects</h4></a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+	<main>
+		<section id="skills">
+			<div class="wrapper">
+				<div class="text_center">
+					<h2 class="h2">Skills</h2>
+				</div>
+				<div class="container">
+					<button class="skill_button" id="button1">button1</button>
+					<button class="skill_button" id="button2">button2</button>
+					<button class="skill_button" id="button3">button3</button>
+					<button class="skill_button" id="button4">button4</button>
+					<button class="skill_button" id="button5">button5</button>
+					<button class="skill_button" id="button6">button6</button>
+				</div>
+			</div>
+		</section>
+		<section id="projs">
+			<div class="wrapper">
+                <div class="text_center">
+                    <h2 class="h2">Projects</h2>
+                </div>
+				<div class="container">
+                    <button class="proj_button" id="button7">
+                        <h3 class="h3">Project Title</h3>
+                        <h4 class="h4">project summary</h4>
+                        <span>
+                            <h5 style="text-align:left;float:left;" class="h5">more text about it</h5>
+                            <h5 style="text-align:right;float:right;" class="h5">even another column</h5>
+                        </span>
+                    </button>
+                    <button class="proj_button" id="button8">button8</button>
+                    <button class="proj_button" id="button9">button9</button>
+                    <button class="proj_button" id="button10">button10</button>
+                    <button class="proj_button" id="button11">button11</button>
+                    <button class="proj_button" id="button12">button12</button>
+				</div>
+			</div>
+		</section>
+	</main>
   </body>
-  <footer>
-    <p>Contact information:</p>
-    <p><i>email</i></p>
-    <p><i>phone no.</i></p>
-    <p><i>linkedin</i></p>
-  </footer>
 </html>
